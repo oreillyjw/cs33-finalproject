@@ -48,18 +48,18 @@ the favorites section will able to be searched and viewed.
 #### In a sentence or list, define a GOOD outcome for your project. What WILL you accomplish no matter what?
 
 Home Page
-    - Trending Movies/movies in theaters (MovieDB endpoint)
-    - Trending TV Shows (MovieDB endpoint)
+    - Trending Movies/movies in theaters (MovieDB endpoint) - Done
+    - Trending TV Shows (MovieDB endpoint) - Done
 Search Results
-    - Searching for a movie or tv Show (MovieDB endpoint)
+    - Searching for a movie or tv Show (MovieDB endpoint) - DONE
 TV/Movie Detail Page
-    - Details about a movie you selected (MovieDB endpoint)
-    - Recommendations (MovieDB endpoint)
-    - Comments will go here and star review (Application comments DB table)
+    - Details about a movie you selected (MovieDB endpoint) - WIP
+    - Recommendations (MovieDB endpoint) - Done
+    - Comments will go here and star review (Application comments DB table) - WIP
       - Add one comment for a logged in user
 Account (Application User DB table)
-    - Sign in
-    - Sign up
+    - Sign in - DONE
+    - Sign up - DONE
 
 
 #### In a sentence or list, define a BETTER outcome for your project. What do you THINK you will accomplish in time?

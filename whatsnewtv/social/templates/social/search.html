@@ -1,0 +1,29 @@
+{% extends "social/layout.html" %}
+{% load static %}
+
+{% block customcss %}
+<!-- Custom styles for this template -->
+  <link href="{% static 'css/product-grid.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+<div class="row">
+  <h2>Results</h2>
+  <div class="col-12">
+    <div class="container-fluid">
+      <div class="row">
+          {% for result in results %}
+            {% include "social/product-grid.html" with item=result %}
+          {% empty %}
+          <div class="col-12">
+            <div class="text-center">
+              Oops looks like your search term: <b>{% autoescape on %}{{ search }}{% endautoescape %}</b>
+              rendered no results. Search for something else
+            </div>
+          </div>
+          {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

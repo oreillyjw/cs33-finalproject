@@ -1,0 +1,4 @@
+.card.details, .row.seasons > .col-md-2 > .card {
+  border: none;
+  cursor: unset;
+}

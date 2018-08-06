@@ -1,0 +1,10 @@
+.row.footer {
+  border-top: 3px solid black;
+  margin-top: 15px;
+}
+
+.footer > .col-12 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+}
