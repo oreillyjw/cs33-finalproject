@@ -157,6 +157,7 @@ def details(request, type, id):
                     user = User.objects.get(username=username)
                     new_tag = Tags(tagged_user=user, tagging_user=request.user, comment=new_comment)
                     new_tag.save()
+
                     #TODO print(f"Emit notifcation for user: {user}")
                 except User.DoesNotExist:
                     errors.append(f"Could notify everyone you wanted to sorry")

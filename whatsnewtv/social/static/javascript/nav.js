@@ -71,7 +71,7 @@ $('div[data-href]').on('click', function(){
 
 if ( $('#notification-icon').length > 0 ){
   const requestIcon = new XMLHttpRequest();
-  const requestType = 'POST';
+  const requestType = 'GET';
 
   requestIcon.open(requestType, `/notifications-count`);
   requestIcon.setRequestHeader("Content-Type", "application/json");
@@ -86,18 +86,4 @@ if ( $('#notification-icon').length > 0 ){
     }
   }
   requestIcon.send();
-
-//   // Connect to websocket
-//   var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
-//   var user_channel =   $('#notification-icon').data('user');
-//   // When connected
-//   socket.on('connect', () => {
-//     console.log("Connected");
-//   });
-//
-//   //add new channel
-//   socket.on(`notification-${user_channel}`, data => {
-//     console.log("New notification");
-//     console.log(data)
-//   });
 }

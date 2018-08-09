@@ -55,7 +55,7 @@ Search Results
 TV/Movie Detail Page
     - Details about a movie you selected (MovieDB endpoint) - WIP
     - Recommendations (MovieDB endpoint) - Done
-    - Comments will go here and star review (Application comments DB table) - WIP
+    - Comments will go here and star review (Application comments DB table) - DONE
       - Add one comment for a logged in user
 Account (Application User DB table)
     - Sign in - DONE
@@ -67,10 +67,10 @@ Home Page
   - If logged in (Application favorites DB table)
       - Your upcoming shows/ favorites
 TV/Movie Detail Page
-  - Ability to favorite/follow a movie or show (Application favorites DB table)
+  - Ability to favorite/follow a movie or show (Application favorites DB table) - DONE
 Account
-    - List of your favorites
-    - List of your comments
+    - List of your favorites - DONE
+    - List of your comments - DONE
 
 
 #### In a sentence or list, define a BEST outcome for your project. What do you HOPE you will accomplish in time?
