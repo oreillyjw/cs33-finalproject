@@ -1,3 +1,5 @@
+var notifications_template = Handlebars.compile(document.querySelector('#notifications-template').innerHTML);
+
 // value comaprision in handlebars in the template
 // https://gist.github.com/pheuter/3515945
 Handlebars.registerHelper("ifvalue", function(conditional, options) {
@@ -32,14 +34,70 @@ $('.navbar-nav > form > .search').on('blur', function(){
 })
 
 $('.nav-item > a.notification').on('click', function () {
-  $("#notifcation-dropdown").html('<div class="dropdown-item text-center" ><i class="fa fa-spinner fa-spin fa-3x fa-fw"></i></div>');
+  let pending = parseInt($('#notification-icon').attr('data-count'));
+  if( pending > 0){
+      $("#notifcation-dropdown").html('<div class="dropdown-item text-center" ><i class="fa fa-spinner fa-spin fa-3x fa-fw"></i></div>');
+      const request = new XMLHttpRequest();
+      const requestType = 'GET';
+
+      request.open(requestType, `/notifications`);
+      request.setRequestHeader("Content-Type", "application/json");
+      if (!csrfSafeMethod(requestType) && !this.crossDomain) {
+          request.setRequestHeader("X-CSRFToken", csrftoken);
+      }
+      // Callback function for when request completes
+      request.onload = () => {
+        const info = JSON.parse(request.responseText);
+        const notifcations = notifications_template({"notifications":info})
+        $("#notifcation-dropdown").html(notifcations);
+        $('#notification-icon').removeAttr('data-count')
+
+      }
+      request.send();
+  }else{
+    $("#notifcation-dropdown").html('<div class="dropdown-item text-center" >No Notifications</div>');
+  }
+
 });
 
 
 $('div[data-href]').on('click', function(){
-  console.log($(this).data('href'));
   let href = $(this).data('href');
   if (href.match(/^\/(movie|tv)\/(\d+)$/)){
     window.location = href;
   }
 });
+
+
+if ( $('#notification-icon').length > 0 ){
+  const requestIcon = new XMLHttpRequest();
+  const requestType = 'POST';
+
+  requestIcon.open(requestType, `/notifications-count`);
+  requestIcon.setRequestHeader("Content-Type", "application/json");
+  if (!csrfSafeMethod(requestType) && !this.crossDomain) {
+      requestIcon.setRequestHeader("X-CSRFToken", csrftoken);
+  }
+  // Callback function for when request completes
+  requestIcon.onload = () => {
+    const info = JSON.parse(requestIcon.responseText);
+    if ( info['count'] > 0 ){
+      $('#notification-icon').attr('data-count',info['count'])
+    }
+  }
+  requestIcon.send();
+
+//   // Connect to websocket
+//   var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
+//   var user_channel =   $('#notification-icon').data('user');
+//   // When connected
+//   socket.on('connect', () => {
+//     console.log("Connected");
+//   });
+//
+//   //add new channel
+//   socket.on(`notification-${user_channel}`, data => {
+//     console.log("New notification");
+//     console.log(data)
+//   });
+}

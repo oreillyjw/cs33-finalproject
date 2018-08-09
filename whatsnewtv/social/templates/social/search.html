@@ -7,23 +7,27 @@
 {% endblock %}
 
 {% block body %}
-<div class="row">
-  <h2>Results</h2>
-  <div class="col-12">
-    <div class="container-fluid">
-      <div class="row">
-          {% for result in results %}
-            {% include "social/product-grid.html" with item=result %}
-          {% empty %}
-          <div class="col-12">
-            <div class="text-center">
-              Oops looks like your search term: <b>{% autoescape on %}{{ search }}{% endautoescape %}</b>
-              rendered no results. Search for something else
-            </div>
+  {% include "social/paging_controls.html" with pages=data page_identifier="page" extra_query=query_param %}
+    <div class="row">
+      <h2>Results <small class="text-muted">(Search Term: {{ search_term|striptags }})</small></h2>
+      <div class="col-12">
+        <div class="container-fluid">
+          <div class="row">
+              {% for result in results %}
+                {% include "social/product-grid.html" with item=result %}
+              {% empty %}
+              <div class="col-12">
+                <div class="text-center">
+                  Oops looks like your search term: <b>{% autoescape on %}{{ search_term|striptags }}{% endautoescape %}</b>
+                  rendered no results. Search for something else
+                </div>
+              </div>
+              {% endfor %}
           </div>
-          {% endfor %}
+        </div>
       </div>
     </div>
-  </div>
-</div>
+  {% include "social/paging_controls.html" with pages=data page_identifier="page" extra_query=query_param %}
+
+
 {% endblock %}
