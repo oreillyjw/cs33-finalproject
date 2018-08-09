@@ -34,7 +34,10 @@
       <div class="card details">
         <div class="card-body">
           {% if request.user.is_authenticated %}
-            <div class="heart-circle {%if favorited %} favorited{%endif%}" data-favorited="{{favorited|yesno:'1,0'}}" data-type="{{type}}" data-id="{{data.id}}">
+            <div class="heart-circle {%if favorited %} favorited{%endif%}"
+                 data-favorited="{{favorited|yesno:'1,0'}}"
+                 data-type="{{type}}"
+                 data-id="{{data.id}}">
               <i class="fa fa-2x fa-heart" aria-hidden="true"></i>
             </div>
           {% endif %}
@@ -42,7 +45,9 @@
             <h1 class="card-title page-title">{{data.title}} ({{data.release_date|parse_date|date:"Y"}})</h1>
           {% else %}
             <h1 class="card-title page-title">{{data.name}}
-              {% if data.first_air_date %}<small class="text-muted">({{data.first_air_date|parse_date|date:"Y"}} -{% endif %}
+              {% if data.first_air_date %}<small class="text-muted">
+                ({{data.first_air_date|parse_date|date:"Y"}} -
+              {% endif %}
               {% if data.in_production %}Present)</small>
               {% elif data.last_air_date%}{{data.last_air_date|parse_date|date:"Y"}})</small>
               {% endif %}
@@ -60,14 +65,44 @@
             <div class="row">
               <div class="col-sm-6">
                 <ul>
-                  {% if data.release_date %}<li>Released: {{data.release_date|parse_date|date:"Y"}}</li>{% endif %}
-                  {% if data.vote_average %}<li>Rating: {{data.vote_average}}/10</li>{% endif %}
-                  {% if data.runtime %}<li>Runtime: {{data.runtime}} min</li>{% endif %}
-                  {% if data.tagline %}<li>Tag Line: <i>{{data.tagline}}</i></li>{% endif %}
-                  {% if data.revenue %}<li>Revenue: {{data.revenue|currency}}</li>{% endif %}
-                  {% if data.budget %}<li>Budget: {{data.budget|currency}}</li>{% endif %}
-                  {% if data.number_of_episodes %}<li>Num. of Episodes: {{data.number_of_episodes}}</li>{% endif %}
-                  {% if data.number_of_seasons %}<li>Num. of Seasons: {{data.number_of_seasons}}</li>{% endif %}
+                  {% if data.release_date %}
+                    <li>Released: {{data.release_date|parse_date|date:"Y"}}</li>
+                  {% endif %}
+                  {% if data.vote_average %}
+                    <li>
+                      Rating: {{data.vote_average}}/10
+                    </li>
+                  {% endif %}
+                  {% if data.runtime %}
+                    <li>
+                      Runtime: {{data.runtime}} min
+                    </li>
+                  {% endif %}
+                  {% if data.tagline %}
+                    <li>
+                      Tag Line: <i>{{data.tagline}}</i>
+                    </li>
+                  {% endif %}
+                  {% if data.revenue %}
+                    <li>
+                      Revenue: {{data.revenue|currency}}
+                    </li>
+                  {% endif %}
+                  {% if data.budget %}
+                    <li>
+                      Budget: {{data.budget|currency}}
+                    </li>
+                  {% endif %}
+                  {% if data.number_of_episodes %}
+                    <li>
+                      Num. of Episodes: {{data.number_of_episodes}}
+                    </li>
+                  {% endif %}
+                  {% if data.number_of_seasons %}
+                    <li>
+                      Num. of Seasons: {{data.number_of_seasons}}
+                    </li>
+                  {% endif %}
                 </ul>
               </div>
               <div class="col-sm-6">
@@ -96,9 +131,19 @@
           <h3>Add Review</h3>
           <form action="{% url 'details' type=type id=data.id %}" method="POST">
             <input class="form-control form-control-lg" type="text" placeholder="Title" name="title" maxlength="64">
-            <input id="new-star-rating" name="new-rating" class="rating rating-loading" data-min="0" data-max="10" data-step="0.5">
+            <input id="new-star-rating"
+                   name="new-rating"
+                   class="rating rating-loading"
+                   data-min="0"
+                   data-max="10"
+                   data-step="0.5">
             <div class="form-group">
-              <textarea class="form-control" id="commentTextarea" name="comment-text" rows="3" cols="80" spellcheck="true"></textarea>
+              <textarea class="form-control"
+                        id="commentTextarea"
+                        name="comment-text"
+                        rows="3"
+                        cols="80"
+                        spellcheck="true"></textarea>
               <div class="text-muted text-right">@ :Tag user</div>
             </div>
             <input type="hidden" name="tags" value="">
@@ -135,7 +180,9 @@
               <div class="col-md-2">
                   <div class="card mb-2 box-shadow">
                   {% if item.poster_path %}
-                    <img class="card-img-top" src="http://image.tmdb.org/t/p/w300/{{item.poster_path}}" alt="{{item.name}}">
+                    <img class="card-img-top"
+                         src="http://image.tmdb.org/t/p/w300/{{item.poster_path}}"
+                         alt="{{item.name}}">
                   {% endif %}
                   <div class="card-body">
                     {% if item.title %}
@@ -143,7 +190,9 @@
                         {{ item.air_date|parse_date|date:"Y" }}
                         ){%endif%}</h5>
                     {% else %}
-                      <h5 class="card-title">{{item.name}}{% if item.air_date %} ({{item.air_date|parse_date|date:"Y" }}){%endif%}</h5>
+                      <h5 class="card-title">
+                          {{item.name}}
+                          {% if item.air_date %} ({{item.air_date|parse_date|date:"Y" }}){%endif%}</h5>
                     {% endif %}
                     {% if item.episode_count %}
                       <div class="card-text">
@@ -155,7 +204,15 @@
                         <p class="collapse" id="collapseSummary-{{item.id}}">
                             {{item.overview}}
                         </p>
-                        <a class="collapsed" data-toggle="collapse" href="#collapseSummary-{{item.id}}" aria-expanded="false" aria-controls="collapseSummary-{{item.id}}"></a>
+                        <a class="collapsed"
+
+                        data-toggle="collapse"
+
+                        href="#collapseSummary-{{item.id}}"
+
+                        aria-expanded="false"
+
+                         aria-controls="collapseSummary-{{item.id}}"></a>
                       </div>
                     {% endif %}
                   </div>

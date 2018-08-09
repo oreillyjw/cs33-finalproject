@@ -12,7 +12,8 @@
     <div class="d-flex">
       <h5 class="card-title p-2">{{comment.user.username}}</h5>
       <p class="card-text p-2">
-          <input class="existing-rating rating rating-loading" value="{{comment.rating}}" data-min="0" data-max="10" data-step="0.5">
+          <input class="existing-rating rating rating-loading"
+                 value="{{comment.rating}}" data-min="0" data-max="10" data-step="0.5">
         <span>Rating: {{comment.rating|floatformat:"-1"}}/10</span>
       </p>
     </div>
@@ -23,7 +24,10 @@
   </div>
   {%if include_moviedb_info %}
   <div class="card-footer text-muted">
-      <a class="text-muted" href="{% url 'details' type=comment.moviedb.type id=comment.moviedb.moviedb_id %}">{{comment.moviedb}}</a>
+      <a class="text-muted"
+         href="{% url 'details' type=comment.moviedb.type id=comment.moviedb.moviedb_id %}">
+         {{comment.moviedb}}
+      </a>
   </div>
   <br>
   {% endif %}

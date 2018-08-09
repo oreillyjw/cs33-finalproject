@@ -23,7 +23,10 @@
         <div class="col-12">
           <div class="list-group">
             {% for favorite in favorites %}
-              <a class="list-group-item list-group-item-action" href="{% url 'details' type=favorite.moviedb.type id=favorite.moviedb.moviedb_id %}">{{favorite.moviedb}}</a>
+              <a class="list-group-item list-group-item-action"
+                 href="{% url 'details' type=favorite.moviedb.type id=favorite.moviedb.moviedb_id %}">
+                 {{favorite.moviedb}}
+              </a>
             {% empty %}
               <div class="no-comments text-center">You have not favorited any movies or tv shows</div>
             {% endfor %}

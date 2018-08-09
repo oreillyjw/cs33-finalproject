@@ -36,7 +36,9 @@ $('.navbar-nav > form > .search').on('blur', function(){
 $('.nav-item > a.notification').on('click', function () {
   let pending = parseInt($('#notification-icon').attr('data-count'));
   if( pending > 0){
-      $("#notifcation-dropdown").html('<div class="dropdown-item text-center" ><i class="fa fa-spinner fa-spin fa-3x fa-fw"></i></div>');
+      $("#notifcation-dropdown").html(
+        '<div class="dropdown-item text-center" ><i class="fa fa-spinner fa-spin fa-3x fa-fw"></i></div>'
+      );
       const request = new XMLHttpRequest();
       const requestType = 'GET';
 
@@ -63,6 +65,7 @@ $('.nav-item > a.notification').on('click', function () {
 
 $('div[data-href]').on('click', function(){
   let href = $(this).data('href');
+  console.log($('.card-text > p').hasClass('collapsing'))
   if (href.match(/^\/(movie|tv)\/(\d+)$/)){
     window.location = href;
   }

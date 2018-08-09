@@ -37,7 +37,11 @@
             <ul class="navbar-nav mr-auto">
               <form action="{% url 'search' %}" method="post" class="form-inline my-2 my-lg-0">
                 {% csrf_token %}
-                <input class="form-control mr-sm-2 search" name="search-term" type="search" placeholder="Search" aria-label="Search">
+                <input class="form-control mr-sm-2 search"
+                       name="search-term"
+                       type="search"
+                       placeholder="Search"
+                       aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0 d-none" type="submit">Search</button>
               </form>
             </ul>
@@ -123,8 +127,11 @@
             {{#each notifications}}
             <a class="dropdown-item text-left" href="{{this.url}}" >
                 <i>{{ this.from }}</i> tagged you in a comment<br>
-                regarding {{# if this.moviedb_data.title }}movie: <b>{{this.moviedb_data.title}}{{else if this.moviedb_data.name }}
-                tv show: <b>{{this.moviedb_data.name}}{{/if}}</b>
+                regarding {{# if this.moviedb_data.title }}
+                movie: <b>{{this.moviedb_data.title}}
+                {{else if this.moviedb_data.name }}
+                tv show: <b>{{this.moviedb_data.name}}
+                {{/if}}</b>
             </a>
             {{/each}}
         {% endverbatim %}
